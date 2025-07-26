@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js 15 キャッシュ機能学習プロジェクト
 
-## Getting Started
+このプロジェクトは、Next.js 15 の 4 つの主要なキャッシュ機能を学習するためのサンプルアプリケーションです。
 
-First, run the development server:
+## 🎯 学習目標
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Next.js 15 の以下の 4 つのキャッシュ機能について理解を深めることができます：
+
+1. **Request Memoization** - リクエストの重複実行を防ぐ
+2. **Data Cache** - データフェッチの結果をキャッシュ
+3. **Full Route Cache** - ページ全体をキャッシュ
+4. **Router Cache** - クライアントサイドのナビゲーションをキャッシュ
+
+## 📁 プロジェクト構成
+
+```
+src/
+├── app/
+│   ├── request-memoization/     # Request Memoization の例
+│   ├── data-cache/             # Data Cache の例
+│   ├── full-route-cache/       # Full Route Cache の例
+│   ├── router-cache/           # Router Cache の例
+│   ├── api/                    # API エンドポイント
+│   └── utils/                  # ユーティリティ関数
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 セットアップ
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# 依存関係のインストール
+npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# 開発サーバーの起動
+npm run dev
+```
 
-## Learn More
+## 📚 各キャッシュ機能の説明
 
-To learn more about Next.js, take a look at the following resources:
+### 1. Request Memoization
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **目的**: 同じリクエストの重複実行を防ぐ
+- **適用範囲**: サーバーコンポーネント内でのデータフェッチ
+- **特徴**: 同じ引数での関数呼び出しを自動的にメモ化
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 2. Data Cache
 
-## Deploy on Vercel
+- **目的**: データフェッチの結果をキャッシュ
+- **適用範囲**: fetch() やデータベースクエリ
+- **特徴**: 設定可能な TTL（Time To Live）でキャッシュ期間を制御
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3. Full Route Cache
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **目的**: ページ全体をキャッシュ
+- **適用範囲**: 静的ページや動的ページ
+- **特徴**: レンダリング結果をキャッシュして高速化
+
+### 4. Router Cache
+
+- **目的**: クライアントサイドのナビゲーションをキャッシュ
+- **適用範囲**: ページ間の遷移
+- **特徴**: ユーザーのナビゲーション体験を向上
+
+## 🔧 開発者ツール
+
+各ページには以下の機能が含まれています：
+
+- キャッシュの動作を確認するためのボタン
+- キャッシュの状態を表示する UI
+- 詳細な説明とコード例
+
+## 📖 学習の進め方
+
+1. 各キャッシュ機能のページを順番に確認
+2. コード内のコメントを読んで理解
+3. 実際にボタンをクリックして動作を確認
+4. ブラウザの開発者ツールでネットワークタブを確認
+
+## 🛠️ 技術スタック
+
+- Next.js 15
+- TypeScript
+- Tailwind CSS
+- React Server Components
