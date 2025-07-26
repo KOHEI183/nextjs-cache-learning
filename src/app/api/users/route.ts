@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { simulateApiCall } from "@/app/utils/cache-utils";
+import { simulateApiCall, getCurrentTime } from "@/app/utils/cache-utils";
 
 /**
  * ユーザーデータを取得するAPIエンドポイント
@@ -29,6 +29,8 @@ export async function GET(request: Request) {
       "Content-Type": "application/json",
       // キャッシュ制御ヘッダー（Data Cacheの動作確認用）
       "Cache-Control": "public, s-maxage=10, stale-while-revalidate=59",
+      // レスポンス時間のヘッダー（デバッグ用）
+      "X-Response-Time": getCurrentTime(),
     };
 
     // レスポンスを返す
