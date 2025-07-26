@@ -184,3 +184,71 @@ export function getCacheInfo(cacheType: string, isCached: boolean) {
     status: isCached ? "キャッシュヒット" : "キャッシュミス",
   };
 }
+
+/**
+ * Next.jsのキャッシュディレクトリ情報を取得する関数
+ *
+ * @returns object - キャッシュディレクトリの情報
+ */
+export function getCacheDirectoryInfo() {
+  const cachePaths = {
+    dataCache: ".next/cache",
+    serverDataCache: ".next/server/app/data-cache",
+    routerCache: ".next/server/app/router-cache",
+    fullRouteCache: ".next/server/app/full-route-cache",
+    requestMemoization: ".next/server/app/request-memoization",
+  };
+
+  return {
+    paths: cachePaths,
+    description: {
+      dataCache: "Data Cache - fetch()の結果をキャッシュ（ファイルシステム）",
+      serverDataCache: "サーバーサイドのData Cache",
+      routerCache: "Router Cache - ページ遷移のキャッシュ（メモリ）",
+      fullRouteCache:
+        "Full Route Cache - 完全なルートのキャッシュ（ファイルシステム）",
+      requestMemoization:
+        "Request Memoization - 関数呼び出しのキャッシュ（メモリ）",
+    },
+  };
+}
+
+/**
+ * キャッシュの種類と保存場所の説明
+ */
+export const CACHE_LOCATIONS = {
+  DATA_CACHE: {
+    name: "Data Cache",
+    location: "ファイルシステム (.next/cache/)",
+    type: "ファイルベース",
+    persistence: "永続的（サーバー再起動後も保持）",
+    scope: "サーバーサイド",
+    description:
+      "fetch()の結果をキャッシュ。ファイルシステムに保存されるため永続的。",
+  },
+  ROUTER_CACHE: {
+    name: "Router Cache",
+    location: "メモリ (in-memory)",
+    type: "メモリベース",
+    persistence: "一時的（サーバー再起動でクリア）",
+    scope: "サーバーサイド",
+    description:
+      "ページ遷移のキャッシュ。メモリに保存されるため高速だが一時的。",
+  },
+  FULL_ROUTE_CACHE: {
+    name: "Full Route Cache",
+    location: "ファイルシステム (.next/server/app/full-route-cache/)",
+    type: "ファイルベース",
+    persistence: "永続的（サーバー再起動後も保持）",
+    scope: "サーバーサイド",
+    description: "完全なルートのキャッシュ。静的生成されたページをキャッシュ。",
+  },
+  REQUEST_MEMOIZATION: {
+    name: "Request Memoization",
+    location: "メモリ (in-memory)",
+    type: "メモリベース",
+    persistence: "一時的（リクエスト間で保持）",
+    scope: "サーバーサイド",
+    description: "同じ引数での関数呼び出しをキャッシュ。メモリに保存される。",
+  },
+};

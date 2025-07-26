@@ -16,7 +16,7 @@ export default function Home() {
         </header>
 
         {/* キャッシュ機能のカード */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
           {/* Request Memoization */}
           <Link href="/request-memoization" className="group">
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-200 dark:border-gray-700 group-hover:border-blue-300 dark:group-hover:border-blue-600">
@@ -73,6 +73,21 @@ export default function Home() {
               </h3>
               <p className="text-gray-600 dark:text-gray-300 text-sm">
                 クライアントサイドのナビゲーションをキャッシュし、UXを向上させます。
+              </p>
+            </div>
+          </Link>
+
+          {/* キャッシュの保存場所 */}
+          <Link href="/cache-locations" className="group">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-200 dark:border-gray-700 group-hover:border-red-300 dark:group-hover:border-red-600">
+              <div className="text-red-600 dark:text-red-400 text-3xl mb-4">
+                📍
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                キャッシュの保存場所
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                キャッシュがどこに保存されているかを確認し、in-memoryとファイルシステムの違いを理解します。
               </p>
             </div>
           </Link>
